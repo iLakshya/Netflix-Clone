@@ -22,15 +22,15 @@ function MoviePage() {
 
     useEffect(() => {
         dispatch(getGenres());
-    }, [dispatch]);
+    }, []);
 
     useEffect(() => {
         if (genresLoaded) {
             dispatch(fetchMovies({ genres, type: "movie" }));
         }
-    }, [dispatch, genres, genresLoaded]);
+    }, [genresLoaded]);
 
-    const [setUser] = useState(undefined);
+    const [user, setUser] = useState(undefined);
 
     onAuthStateChanged(firebaseAuth, (currentUser) => {
         if (currentUser) setUser(currentUser.uid);
@@ -41,6 +41,7 @@ function MoviePage() {
         setIsScrolled(window.pageYOffset === 0 ? false : true);
         return () => (window.onscroll = null);
     };
+    
   return (
     <Container>
         <div className="navbar">

@@ -6,13 +6,14 @@ import Header from '../components/Header';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from '../utils/firebase-config';
 
-export default function Signup() {
+function Signup() {
     const [showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate();
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
     });
+    const navigate = useNavigate();
+
     const handleSignIn = async() => {
         try {
             const {email, password} = formValues;
@@ -55,7 +56,9 @@ export default function Signup() {
                         <button onClick={() => setShowPassword(true)}>Get Started</button>
                     )}
                 </div>
-                <button onClick={handleSignIn}>Sign Up</button>
+                {
+                    showPassword && <button onClick={handleSignIn}>Log In</button>
+                }
             </div>
         </div>
     </Container>
@@ -123,4 +126,4 @@ const Container = styled.div`
     }
 `;
 
-// export default Signup;
+export default Signup;

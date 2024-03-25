@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import logo from "../assets/logo.png";
-import background from "../assets/login.jpg";
 import { useNavigate } from 'react-router-dom';
 import BackgroundImage from '../components/BackgroundImage';
 import Header from '../components/Header';
@@ -43,10 +41,12 @@ function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}/>
 
-              <input type="password" placeholder="Password" name="password"
-                    value={formValues.password}
-                    onChange={(e)=>setFormValues({...formValues,[e.target.name]:e.target.value})}/>
-
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
               <button onClick={handleLogin}>Log In</button>
             </div>
           </div>
